@@ -1,0 +1,542 @@
+:root {
+    /* Tus colores del gradiente */
+    --neon-cyan: #08D3AF;
+    --neon-pink: #FF304F;
+    --dark-bg: #121212;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--dark-bg); /* #121212 */
+    color: white;
+    
+    /* MAGIA AQUÍ: */
+    /* Capa 1: Un gradiente que va de transparente (arriba) a NEGRO SOLIDO (abajo) */
+    /* Capa 2: Tu imagen de fondo nueva (ej. 4.jpg) */
+    background-image: 
+        linear-gradient(to bottom, rgba(18,18,18,0.2) 50%, var(--dark-bg) 100%),
+        url('./img/bg/5.png'); /* Asegúrate que la ruta sea correcta */
+        
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    
+    /* Importante para evitar scroll horizontal por el hero */
+    overflow-x: hidden; 
+}
+
+/* Efecto Vidrio Reutilizable */
+.glass-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(18, 18, 18, 0.522);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.logo { font-weight: 900; font-size: 1.5rem; letter-spacing: 2px; }
+
+.nav-links { list-style: none; display: flex; gap: 30px; }
+.nav-links a { text-decoration: none; color: white; font-size: 0.9rem; opacity: 0.8; transition: 0.3s; }
+.nav-links a:hover { opacity: 1; color: var(--neon-cyan); }
+
+/* HERO SECTION */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0px; /* Reduje el gap porque la foto es ancha */
+    padding: 0 5%;
+    position: relative;
+    /* overflow: unset;  <-- Bien, déjalo así o quítalo, pero controla el body */
+}
+
+/* Círculos de luz de fondo (Ambiente) */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    width: 400px;
+    height: 400px;
+    background: var(--neon-pink);
+    filter: blur(150px);
+    opacity: 0.4;
+    z-index: -1;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    width: 300px;
+    height: 300px;
+    background: var(--neon-cyan);
+    filter: blur(120px);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 50%;
+    z-index: 10;
+}
+
+.subtitle {
+    color: var(--neon-cyan);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 5rem;
+    line-height: 1;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #fff, #aaa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tags {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ccc;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    padding: 15px 40px;
+    border: 1px solid var(--neon-pink);
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+    background: rgba(255, 48, 79, 0.1);
+}
+
+.cta-button:hover {
+    background: var(--neon-pink);
+    box-shadow: 0 0 20px var(--neon-pink);
+}
+
+.hero-image-container {
+    height: 100%;
+    display: flex;
+    align-items: flex-end; 
+    justify-content: center;
+    flex: 1; /* Para que ocupe espacio equitativo con el texto */
+}
+
+
+
+.hero-img {
+    height: 100vh; /* Ocupa toda la pantalla */
+    width: auto;
+    object-fit: cover;
+    
+    /* La bajamos un pelín para "enterrar" el corte real fuera de vista */
+    transform: translateY(5%); 
+    
+    /* Sombra para despegarla del fondo (da volumen) */
+    filter: drop-shadow(0 0 20px rgba(0,0,0,0.8));
+
+    /* Máscara: Se ve perfecta (black) hasta el 85%, y se desvanece al final */
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+
+    display: block;
+    position: relative;
+    z-index: 10;
+}
+
+/* SECCIÓN PORTFOLIO */
+.portfolio-section {
+    padding: 100px 10%;
+    position: relative;
+    z-index: 2; /* Para que quede sobre el fondo fijo */
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    text-align: center;
+    letter-spacing: 5px;
+    background: linear-gradient(to right, #fff, #666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* EL GRID MAGICO */
+.portfolio-grid {
+    display: grid;
+    /* Esto crea columnas automáticas de mínimo 300px */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    /* Masonry denso (opcional, requiere soporte o JS, por ahora grid simple) */
+    grid-auto-flow: dense;
+}
+
+/* TARJETAS DE VIDRIO */
+.glass-card {
+    border-radius: 20px;
+    overflow: hidden; /* Para que la imagen no se salga de los bordes redondos */
+    position: relative;
+    cursor: pointer;
+    /* Efecto Vidrio Base */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+}
+
+/* Manejo de tamaños en el grid */
+.portrait { grid-row: span 2; } /* Ocupa 2 filas de alto */
+.landscape { grid-column: span 1; } /* Ocupa 1 columna (o 2 si quieres ancha) */
+
+.glass-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    filter: grayscale(100%); /* Blanco y negro por defecto */
+}
+
+/* INTERACCIÓN HOVER (La Magia) */
+.glass-card:hover {
+    transform: translateY(-10px); /* Flota hacia arriba */
+    box-shadow: 0 15px 30px rgba(8, 211, 175, 0.2); /* Sombra Cyan suave */
+    border-color: var(--neon-cyan);
+}
+
+.glass-card:hover img {
+    transform: scale(1.1); /* Zoom suave */
+    filter: grayscale(0%); /* Vuelve el color */
+}
+
+/* Texto sobre la foto */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.glass-card:hover .overlay {
+    opacity: 1;
+}
+
+.overlay span {
+    color: var(--neon-cyan);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* SECCIÓN STATS */
+.stats-section {
+    padding: 80px 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.glass-container {
+    background: rgba(20, 20, 20, 0.6); /* Un poco más oscuro para leer datos */
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    padding: 50px;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decoración Neón sutil dentro de la tarjeta */
+.glass-container::before {
+    content: '';
+    position: absolute;
+    top: -50px; left: -50px;
+    width: 200px; height: 200px;
+    background: var(--neon-cyan);
+    filter: blur(80px);
+    opacity: 0.2;
+}
+
+.stats-layout {
+    display: flex;
+    align-items: center;
+    padding: 0; /* Quitamos padding del contenedor para que la foto toque los bordes */
+    overflow: hidden; /* Clave para que la foto respete los bordes redondos */
+    gap: 0;
+}
+
+.stats-image-col {
+    flex: 0 0 40%; 
+    height: 100%;
+    min-height: 500px; /* Altura mínima para que luzca */
+}
+
+.stats-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta la imagen para llenar el espacio sin deformar */
+    display: block;
+}
+
+.stats-content {
+    flex: 1;
+    padding: 40px;
+}
+
+.stats-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: white;
+    letter-spacing: 3px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat-item .label {
+    color: #aaa;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-item .value {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--neon-cyan); /* Usa tus variables */
+    text-shadow: 0 0 10px rgba(8, 211, 175, 0.3);
+}
+
+.stat-item small {
+    font-size: 1rem;
+    color: #888;
+}
+
+/* Botón descarga */
+.actions {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.download-btn {
+    text-decoration: none;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 10px 30px;
+    border-radius: 50px;
+    transition: 0.3s;
+    font-size: 0.9rem;
+}
+
+.download-btn:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 15px white;
+}
+
+/* FOOTER ESTILO NEÓN */
+.glass-footer {
+    margin-top: 100px;
+    padding: 80px 20px 40px;
+    background: linear-gradient(to top, black 0%, rgba(18,18,18,0.8) 100%);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+    position: relative;
+}
+
+.footer-title {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.footer-text {
+    color: #888;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.social-btn {
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* Colores específicos al pasar el mouse */
+.social-btn.whatsapp:hover {
+    background: #25D366;
+    border-color: #25D366;
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+    transform: translateY(-5px);
+    color: black;
+}
+
+.social-btn.instagram:hover {
+    background: #d62976; /* Rosa Instagram */
+    border-color: #d62976;
+    box-shadow: 0 0 20px rgba(214, 41, 118, 0.4);
+    transform: translateY(-5px);
+}
+
+.social-btn.email:hover {
+    background: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(8, 211, 175, 0.4);
+    transform: translateY(-5px);
+    color: black;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: #444;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 20px;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (Móvil y Tablets)
+   ========================================= */
+@media (max-width: 900px) {
+
+    /* 1. HERO: Texto arriba, Foto abajo */
+    .hero {
+        flex-direction: column; /* Apilar verticalmente */
+        justify-content: center;
+        padding-top: 100px; /* Espacio para que no choque con el navbar */
+        gap: 20px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        text-align: center;
+        z-index: 20; /* Asegurar que el texto quede sobre la foto si se tocan */
+    }
+
+    .title {
+        font-size: 3.5rem; /* Achicar título gigante */
+    }
+
+    .tags {
+        justify-content: center; /* Centrar etiquetas */
+        font-size: 0.8rem;
+    }
+
+    .hero-image-container {
+        width: 100%;
+        height: 60vh; /* La foto ocupa el 60% de la pantalla vertical */
+        align-items: flex-end;
+    }
+    
+    .hero-img {
+        height: 100%; /* Que llene su contenedor */
+        transform: translateY(0); /* Resetear posición */
+    }
+
+    /* 2. STATS (MEDIDAS): El problema crítico de tu captura */
+    .stats-layout {
+        flex-direction: column; /* Foto arriba, datos abajo */
+    }
+
+    .stats-image-col {
+        width: 100%; /* Ancho total */
+        height: 400px; /* Altura fija para que la foto se vea bien */
+        flex: none; /* Evita que se aplaste */
+    }
+
+    .stats-content {
+        width: 100%;
+        padding: 30px 20px; /* Menos padding lateral */
+    }
+
+    .stats-title {
+        font-size: 2rem;
+    }
+    
+    .stats-grid {
+        gap: 20px;
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas forzadas en móvil */
+    }
+
+    /* 3. NAVBAR */
+    .glass-nav {
+        padding: 15px 20px;
+    }
+    
+    .logo { font-size: 1.2rem; }
+    
+    /* Ocultar menú complejo en móvil o hacerlo simple */
+    .nav-links {
+        gap: 15px;
+        background: rgba(0,0,0,0.9); /* Fondo oscuro para leer */
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        justify-content: center;
+        padding: 15px;
+        border-top: 1px solid #333;
+        top: auto; /* Anular el top */
+    }
+
+    /* 4. FOOTER */
+    .footer-title {
+        font-size: 1.8rem;
+    }
+    
+    .social-buttons {
+        gap: 10px;
+        flex-direction: column; /* Botones uno debajo del otro para clics fáciles */
+        padding: 0 40px;
+    }
+}
