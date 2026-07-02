@@ -2,7 +2,7 @@
 
 Snapshot del estado del proyecto y próximos pasos para retomar.
 
-Última actualización: después del push `db1d603 feat: portfolio completo con 7 sesiones y theme toggle`.
+Última actualización: después del commit `04f2f45 fix: hero cara visible + hover sombra stitch + lime light legible`.
 
 ---
 
@@ -89,39 +89,20 @@ Contacto:
 
 Pedidos en orden de mención (ordené la prioridad según criterio técnico):
 
-### 🔴 PRIORIDAD 1 — Hero más imponente + paleta más colorida (referencia: Lila Models)
+### ✅ PRIORIDAD 1 — Hero más imponente + paleta más colorida (RESUELTO)
 
-**Qué quiere el usuario:**
-- Foto principal más grande e impactante (estilo Lila Models: hero full-bleed con foto dominante, no cuadrada chiquita al costado)
-- Aprovechar los colores vibrantes de las fotos (Full Contrast tiene rosas, amarillos, verdes, celestes muy fuertes)
-- Más colorido general
-
-**Lo que implica:**
-- Rediseñar el hero actual (hoy foto 4:5 al lado del texto, pasa a full-bleed con texto superpuesto)
-- Mover el toggle de theme a "dark como default" y darle más protagonismo al neon lime / hot pink
-- Repensar paleta: en lugar de light como default, dark + acentos vibrantes (más "agency de modelos")
-- Mantener el toggle para que el usuario pueda volver a light si quiere
-- Cambiar la imagen actual del hero (date-ross-09) por una más dramática/editorial
-
-**Pasos concretos al retomar:**
-1. Elegir nueva imagen del hero entre las 228 disponibles (sugerencias: `magazine-06`, `magazine-08`, `tbn-04`, `full-contrast-01`, `retrato-39`, etc — todas tienen colores fuertes)
-2. Decidir si el dark pasa a ser el theme por defecto
-3. Rediseñar el hero:
-   - Foto full-bleed (no recorte 4:5 chiquito)
-   - Texto del lado izquierdo (nombre + bajada) o superpuesto
-   - Acentos en neón lime o colores vibrantes
-4. Agregar más color en el resto de la página:
-   - Usar hot pink o neon lime en los números de sesión
-   - Bordes de hover en lime
-   - Posibles gradientes sutiles extraídos de las fotos
-5. Validar mobile (la versión actual mobile hace la foto del hero column-stack, hay que mantener eso)
-
-**Imagen de referencia:** `ejemplo pagina.png` (Lila Models Lagos)
-
-**Tradeoffs a discutir con el usuario:**
-- ¿Dark como default o mantener light como default y solo usar dark cuando él lo active?
-- ¿Cuánto de "colorido"? Si nos pasamos, perdemos el feel editorial Vogue/i-D
-- ¿Hero full-bleed absoluto (sin texto al lado) o mantener algo de texto?
+**Implementado en commits `8d9d89b` y `04f2f45`:**
+- Dark como default, light como override
+- Hero full-bleed 100vh con `full-contrast-04` (foto colorida, Gimena con remera verde contra pared rosa+verde)
+- Texto superpuesto a la izquierda con overlay gradient
+- `object-position: center 28%` + padding-top extra para que la cara no quede tapada
+- Tipografía: "MODELO INDEPENDIENTE · BUENOS AIRES" en lime/serif, "Gimena Coradello" en serif enorme, bajada
+- CTAs: lime sólido + ghost light
+- Zoom cinematográfico sutil (animación 14s)
+- Números de sesión en lime outlined (filled en light)
+- Block-shadow Stitch en fotos: 8px lime/pink, crece a 12px en hover + foto se desplaza
+- Hover en logo GIMENA: lime en dark / pink en light
+- Light theme con `--secondary: #3d5c00` y `--tertiary: #d60043` para contraste AA
 
 ---
 
