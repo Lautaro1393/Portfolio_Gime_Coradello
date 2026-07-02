@@ -168,7 +168,7 @@ ul { list-style: none; }
     transition: color var(--transition);
     position: relative;
 }
-.nav__logo:hover { color: var(--secondary); }
+.nav__logo:hover { color: var(--tertiary); }
 [data-theme="light"] .nav__logo:hover { color: var(--tertiary); }
 .nav__menu ul {
     display: flex;
