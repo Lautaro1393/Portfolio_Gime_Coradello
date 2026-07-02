@@ -49,3 +49,5 @@ conver.js
 *.docx
 *.pdf
 !composite/GI.pdf
+og-base.jpg
+og-preview.jpg
