@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview — Selección de fotos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f9f9f9;
+            --on-surface: #1a1a1a;
+            --on-surface-variant: #444748;
+            --outline: #c4c7c7;
+            --primary: #000;
+            --on-primary: #fff;
+            --secondary: #e0ff4f;
+            --tertiary: #ff3366;
+        }
+        [data-theme="dark"] {
+            --bg: #0a0a0a;
+            --on-surface: #f5f5f5;
+            --on-surface-variant: #a8a8a8;
+            --outline: #2e2e2e;
+            --primary: #f5f5f5;
+            --on-primary: #0a0a0a;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Hanken Grotesk', system-ui, sans-serif; background: var(--bg); color: var(--on-surface); padding: 2rem; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .intro { color: var(--on-surface-variant); margin-bottom: 2rem; max-width: 60ch; }
+        .toolbar { position: sticky; top: 0; background: var(--bg); padding: 1rem 0; border-bottom: 1px solid var(--outline); display: flex; gap: 1rem; align-items: center; z-index: 10; flex-wrap: wrap; }
+        .toolbar button { background: var(--primary); color: var(--on-primary); border: 0; padding: 0.5rem 1rem; font: inherit; cursor: pointer; }
+        .toolbar button:hover { background: var(--secondary); color: var(--on-primary); }
+        .toolbar span { color: var(--on-surface-variant); font-size: 0.875rem; }
+        .session { margin: 3rem 0; }
+        .session h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.25rem; display: flex; align-items: baseline; gap: 1rem; }
+        .session h2 .num { color: var(--tertiary); font-size: 1rem; font-family: 'Hanken Grotesk', sans-serif; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+        .session .meta { color: var(--on-surface-variant); font-size: 0.875rem; margin-bottom: 1.5rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.5rem; }
+        .grid label { display: block; position: relative; aspect-ratio: 3/4; overflow: hidden; cursor: pointer; background: #222; }
+        .grid label img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; display: block; }
+        .grid label:hover img { transform: scale(1.05); }
+        .grid input { position: absolute; opacity: 0; }
+        .grid input:checked + .check { opacity: 1; }
+        .check { position: absolute; inset: 0; background: rgba(255, 51, 102, 0.4); border: 4px solid var(--tertiary); opacity: 0; pointer-events: none; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Playfair Display', serif; font-size: 3rem; }
+        .fname { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; font-size: 0.7rem; padding: 0.5rem; font-family: monospace; opacity: 0; transition: opacity 0.2s; }
+        .grid label:hover .fname { opacity: 1; }
+        .theme-toggle { position: fixed; top: 1rem; right: 1rem; background: var(--primary); color: var(--on-primary); border: 0; width: 40px; height: 40px; cursor: pointer; z-index: 20; }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">☀</button>
+    <h1>Selección de fotos</h1>
+    <p class="intro">228 fotos procesadas. Marcá las que querés en el portfolio. Al final, copiá el JSON y mandámelo, o decime "usá las marcadas de date-ross 01-06" y armo el sitio. Las fotos marcadas se ponen en rosa.</p>
+
+    <div class="toolbar">
+        <button onclick="selectAll()">Marcar todas (sesión actual)</button>
+        <button onclick="clearAll()">Desmarcar todas</button>
+        <button onclick="exportSelection()">Exportar selección (JSON)</button>
+        <span id="count">0 marcadas</span>
+    </div>
+
+    <div id="sessions"></div>
+
+    <script>
+        const SESSIONS = [
+            { name: 'date-ross', label: 'Date Ross', count: 78, desc: 'Editorial masiva, 78 fotos tipo polaroid/lookbook' },
+            { name: 'full-contrast', label: 'Full Contrast 2025', count: 27, desc: 'Campaña comercial 2025' },
+            { name: 'magazine', label: 'Magazine Rock Lights', count: 29, desc: 'Editorial rock/studio con luces duras' },
+            { name: 'retrato', label: 'Retrato Femenino', count: 53, desc: 'Retratos de estudio, clásicos' },
+            { name: 'tbn', label: 'TBN Club', count: 18, desc: 'Producción TBN Club' },
+            { name: 'pasarela', label: 'Pasarela · Vexa Gaia', count: 8, desc: 'Runway Vexa Gaia Harmony + Mer Evequoz' },
+            { name: 'composite-extra', label: 'Composite / Polaroids', count: 15, desc: 'Polaroids adicionales para composite' }
+        ];
+
+        function load() {
+            const container = document.getElementById('sessions');
+            SESSIONS.forEach(s => {
+                const sec = document.createElement('section');
+                sec.className = 'session';
+                sec.id = 'session-' + s.name;
+                const grid = document.createElement('div');
+                grid.className = 'grid';
+                for (let i = 1; i <= s.count; i++) {
+                    let fname;
+                    if (s.name === 'composite-extra') {
+                        fname = `comp-${String(i).padStart(2,'0')}.webp`;
+                    } else if (s.name === 'pasarela') {
+                        fname = `pasarela-${String(i).padStart(2,'0')}.webp`;
+                    } else {
+                        fname = `${s.name}-${String(i).padStart(2,'0')}.webp`;
+                    }
+                    const label = document.createElement('label');
+                    label.innerHTML = `
+                        <input type="checkbox" data-session="${s.name}" data-file="${fname}" onchange="updateCount()">
+                        <span class="check">✓</span>
+                        <img src="./img/sessions/${s.name}/${fname}" alt="${fname}" loading="eager" decoding="async">
+                        <span class="fname">${fname}</span>
+                    `;
+                    grid.appendChild(label);
+                }
+                sec.innerHTML = `<h2><span class="num">${s.count} fotos</span>${s.label}</h2><p class="meta">${s.desc}</p>`;
+                sec.appendChild(grid);
+                container.appendChild(sec);
+            });
+        }
+
+        function updateCount() {
+            const n = document.querySelectorAll('input:checked').length;
+            document.getElementById('count').textContent = n + ' marcadas';
+        }
+
+        function selectAll() {
+            const visible = document.querySelectorAll('.session:not([style*="display: none"]) input');
+            visible.forEach(i => i.checked = true);
+            updateCount();
+        }
+
+        function clearAll() {
+            document.querySelectorAll('input').forEach(i => i.checked = false);
+            updateCount();
+        }
+
+        function exportSelection() {
+            const sel = {};
+            document.querySelectorAll('input:checked').forEach(i => {
+                const s = i.dataset.session;
+                if (!sel[s]) sel[s] = [];
+                sel[s].push(i.dataset.file);
+            });
+            const txt = JSON.stringify(sel, null, 2);
+            navigator.clipboard.writeText(txt).then(() => {
+                alert('Selección copiada al clipboard. Pegámela en el chat.\n\n' + txt);
+            });
+        }
+
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            const html = document.documentElement;
+            const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            document.getElementById('theme-toggle').textContent = next === 'dark' ? '☾' : '☀';
+        });
+
+        load();
+    </script>
+</body>
+</html>

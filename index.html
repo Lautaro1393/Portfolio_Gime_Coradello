@@ -1,137 +1,373 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GIMENA - Modelo Independiente</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&display=swap" rel="stylesheet">
+    <title>Gimena Coradello — Modelo Independiente</title>
+    <meta name="description" content="Portfolio editorial de Gimena Coradello. Modelo independiente disponible para bookings internacionales, campañas y producciones creativas.">
+    <meta name="theme-color" content="#f9f9f9">
+    <meta property="og:title" content="Gimena Coradello — Modelo Independiente">
+    <meta property="og:description" content="Portfolio editorial. Disponible para bookings internacionales.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_AR">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='serif'%3EG%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
+    <script>
+        (function () {
+            try {
+                var stored = localStorage.getItem('gimena-theme');
+                var sysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var theme = stored || (sysDark ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) { }
+        })();
+    </script>
 </head>
 
 <body>
-    <nav class="glass-nav">
-        <div class="logo">GIMENA</div>
-        <ul class="nav-links">
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#stats">Medidas</a></li>
-            <li><a href="#contact" class="btn-contact">Contacto</a></li>
-        </ul>
-    </nav>
-    <header class="hero">
-        <div class="hero-content">
-            <h2 class="subtitle">Modelo Independiente</h2>
-            <h1 class="title">GIMENA</h1>
-            <div class="tags">
-                <span>Editorial</span>
-                <span class="dot"></span>
-                <span>Comercial</span>
-                <span class="dot"></span>
-                <span>Pasarela</span>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="nav" role="banner">
+        <div class="nav__inner">
+            <a class="nav__logo" href="#top" aria-label="Gimena Coradello — inicio">GIMENA</a>
+            <nav class="nav__menu" aria-label="Principal">
+                <ul>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#sesiones">Sesiones</a></li>
+                    <li><a href="#medidas">Medidas</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="nav__actions">
+                <button class="theme-toggle" type="button" aria-label="Cambiar tema" aria-pressed="false">
+                    <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀</span>
+                    <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">☾</span>
+                </button>
+                <a class="btn btn--primary nav__cta" href="#contacto">Booking</a>
+                <button class="nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
-            <a href="#portfolio" class="cta-button">Ver Book</a>
         </div>
-        <div class="hero-image-container">
-            <img src="img/webp/HERO_foto_.sin_BG3.webp" alt="GIMENA Modelo" class="hero-img">
+        <div class="nav__mobile" id="mobile-menu" hidden>
+            <ul>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#sesiones">Sesiones</a></li>
+                <li><a href="#medidas">Medidas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a class="btn btn--primary" href="#contacto">Booking</a></li>
+            </ul>
         </div>
     </header>
-    <section id="portfolio" class="portfolio-section">
-        <h2 class="section-title">PORTFOLIO</h2>
 
-        <div class="portfolio-grid">
-            <div class="glass-card portrait">
-                <img src="./img/29a371c0201901e657af16d8ab088031.jpg" alt="Editorial Neon">
-                <div class="overlay"><span>Editorial</span></div>
-            </div>
-            <div class="glass-card landscape">
-                <img src="./img/f9510b604baec8d0feeb61b988db0f95.jpg" alt="Urban Style">
-                <div class="overlay"><span>Urbano</span></div>
-            </div>
-            <div class="glass-card portrait">
-                <img src="./img/2f174df83191ce69f1ada6cd92a452fe.jpg" alt="Studio">
-                <div class="overlay"><span>Studio</span></div>
-            </div>
-           <div class="glass-card portrait">
-        <img src="./img//webp/WhatsApp Image 2026-01-21 at 10.37.18 AM.webp" alt="Street Style">
-        <div class="overlay"><span>Street</span></div>
-    </div>
-        </div>
-    </section>
-    <section id="stats" class="stats-section">
-<div class="glass-container stats-layout">
-    <div class="stats-image-col">
-        <img src="./img//webp/WhatsApp Image 2026-01-21 at 10.37.17 AM.webp" alt="Gimena Profile" class="stats-img">
-    </div>
+    <main id="main">
 
-    <div class="stats-content">
-        <h2 class="stats-title">MEDIDAS</h2>
-        <div class="stats-grid">
-            <div class="stat-item">
-                <span class="label">Altura</span>
-                <span class="value">1.68 <small>m</small></span>
+        <section class="hero" id="top">
+            <div class="hero__inner">
+                <figure class="hero__media">
+                    <img src="./img/sessions/date-ross/date-ross-09.webp" alt="Gimena Coradello, retrato editorial" width="900" height="1200" fetchpriority="high">
+                </figure>
+                <div class="hero__content">
+                    <p class="label-caps hero__eyebrow">Modelo Independiente</p>
+                    <h1 class="hero__title">Gimena<br>Coradello</h1>
+                    <p class="hero__lede">Disponible para bookings internacionales, campañas y producciones creativas. Colaboro en proyectos y con marcas comprometidas con un impacto positivo.</p>
+                    <div class="hero__ctas">
+                        <a class="btn btn--primary" href="#contacto">Trabajemos juntos</a>
+                        <a class="btn btn--ghost" href="#portfolio">Ver book</a>
+                    </div>
+                </div>
             </div>
-            <div class="stat-item">
-                <span class="label">Ojos</span>
-                <span class="value">Marrones</span>
+            <div class="marquee" aria-hidden="true">
+                <div class="marquee__track">
+                    <span>Gimena</span><span class="marquee__dot">●</span><span>Selected Works 2026</span><span class="marquee__dot">●</span><span>Editorial</span><span class="marquee__dot">●</span><span>Studio</span><span class="marquee__dot">●</span><span>Urban</span><span class="marquee__dot">●</span>
+                    <span>Gimena</span><span class="marquee__dot">●</span><span>Selected Works 2026</span><span class="marquee__dot">●</span><span>Editorial</span><span class="marquee__dot">●</span><span>Studio</span><span class="marquee__dot">●</span><span>Urban</span><span class="marquee__dot">●</span>
+                </div>
             </div>
-             <div class="stat-item">
-                <span class="label">Busto</span>
-                <span class="value">85</span>
-            </div>
-             <div class="stat-item">
-                <span class="label">Pelo</span>
-                <span class="value">Castaño</span>
-            </div>
-             <div class="stat-item">
-                <span class="label">Cintura</span>
-                <span class="value">63</span>
-            </div>
-             <div class="stat-item">
-                <span class="label">Calzado</span>
-                <span class="value">37</span>
-            </div>
-             <div class="stat-item">
-                <span class="label">Cadera</span>
-                <span class="value">90</span>
-            </div>
-             <div class="stat-item">
-                <span class="label">Piel</span>
-                <span class="value">Trigueña</span>
-            </div>
-        </div>
-        
-        <div class="actions">
-            <a href="#" class="download-btn">Descargar Composite (PDF)</a>
-        </div>
-    </div>
-</div>
-</section>
+        </section>
 
-
-
-
-<footer id="contact" class="glass-footer">
-        <div class="footer-content">
-            <h2 class="footer-title">¿TRABAJAMOS JUNTOS?</h2>
-            <p class="footer-text">Disponible para campañas, e-commerce y producciones creativas.</p>
-            
-            <div class="social-buttons">
-                <a href="https://wa.me/5491112345678" target="_blank" class="social-btn whatsapp">
-                    Enviar WhatsApp
-                </a>
-                <a href="https://instagram.com/tu_usuario" target="_blank" class="social-btn instagram">
-                    Instagram
-                </a>
-                <a href="mailto:gimena@email.com" class="social-btn email">
-                    Email
-                </a>
+        <section class="about" id="sobre-mi">
+            <div class="about__inner">
+                <p class="label-caps about__eyebrow">Mi filosofía</p>
+                <h2 class="about__title">Creo que el cuerpo humano es una pieza de arte. Y creo que el arte debe defender algo: la belleza, una historia, un ideal.</h2>
+                <div class="about__columns">
+                    <p>Aporto mi versatilidad a nuevos retos y propuestas, en proyectos y con marcas comprometidas con un impacto positivo. Mi trabajo se mueve entre la editorial, el studio, la pasarela y la campaña comercial, siempre con una mirada propia.</p>
+                    <p>Disponible para sesiones, bookings internacionales y producciones en Buenos Aires y la región.</p>
+                </div>
             </div>
+        </section>
 
-            <div class="copyright">
-                <p>&copy; 2026 Gimena Model. Design by Sierra Tech.</p>
+        <section class="portfolio" id="portfolio" aria-label="Portfolio">
+            <div class="portfolio__inner">
+                <div class="portfolio__head">
+                    <p class="label-caps">Portfolio</p>
+                    <h2 class="section-title">Selected Works</h2>
+                </div>
+
+                <article class="session" id="sesiones">
+                    <header class="session__head">
+                        <p class="session__num">01</p>
+                        <div>
+                            <p class="label-caps">Campaña</p>
+                            <h3 class="session__title">Full Contrast 2025</h3>
+                        </div>
+                    </header>
+                    <div class="session__grid session__grid--nine">
+                        <a class="session__img" href="./img/sessions/full-contrast/full-contrast-01.webp" data-lightbox><img src="./img/sessions/full-contrast/full-contrast-01.webp" alt="Gimena Coradello, Full Contrast 2025, foto 1" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/full-contrast/full-contrast-03.webp" data-lightbox><img src="./img/sessions/full-contrast/full-contrast-03.webp" alt="Gimena Coradello, Full Contrast 2025, foto 3" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/full-contrast/full-contrast-04.webp" data-lightbox><img src="./img/sessions/full-contrast/full-contrast-04.webp" alt="Gimena Coradello, Full Contrast 2025, foto 4" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/full-contrast/full-contrast-05.webp" data-lightbox><img src="./img/sessions/full-contrast/full-contrast-05.webp" alt="Gimena Coradello, Full Contrast 2025, foto 5" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/full-contrast/full-contrast-08.webp" data-lightbox><img src="./img/sessions/full-contrast/full-contrast-08.webp" alt="Gimena Coradello, Full Contrast 2025, foto 8" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/full-contrast/full-contrast-10.webp" data-lightbox><img src="./img/sessions/full-contrast/full-contrast-10.webp" alt="Gimena Coradello, Full Contrast 2025, foto 10" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/full-contrast/full-contrast-14.webp" data-lightbox><img src="./img/sessions/full-contrast/full-contrast-14.webp" alt="Gimena Coradello, Full Contrast 2025, foto 14" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/full-contrast/full-contrast-18.webp" data-lightbox><img src="./img/sessions/full-contrast/full-contrast-18.webp" alt="Gimena Coradello, Full Contrast 2025, foto 18" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/full-contrast/full-contrast-27.webp" data-lightbox><img src="./img/sessions/full-contrast/full-contrast-27.webp" alt="Gimena Coradello, Full Contrast 2025, foto 27" loading="lazy"></a>
+                    </div>
+                    <p class="session__caption label-caps">Campaña · Full Contrast 2025</p>
+                </article>
+
+                <article class="session">
+                    <header class="session__head">
+                        <p class="session__num">02</p>
+                        <div>
+                            <p class="label-caps">Sesión</p>
+                            <h3 class="session__title">Magazine Rock Lights</h3>
+                        </div>
+                    </header>
+                    <div class="session__grid session__grid--six">
+                        <a class="session__img" href="./img/sessions/magazine/magazine-03.webp" data-lightbox><img src="./img/sessions/magazine/magazine-03.webp" alt="Gimena Coradello, Magazine Rock Lights 03" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/magazine/magazine-04.webp" data-lightbox><img src="./img/sessions/magazine/magazine-04.webp" alt="Gimena Coradello, Magazine Rock Lights 04" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/magazine/magazine-06.webp" data-lightbox><img src="./img/sessions/magazine/magazine-06.webp" alt="Gimena Coradello, Magazine Rock Lights 06" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/magazine/magazine-08.webp" data-lightbox><img src="./img/sessions/magazine/magazine-08.webp" alt="Gimena Coradello, Magazine Rock Lights 08" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/magazine/magazine-15.webp" data-lightbox><img src="./img/sessions/magazine/magazine-15.webp" alt="Gimena Coradello, Magazine Rock Lights 15" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/magazine/magazine-17.webp" data-lightbox><img src="./img/sessions/magazine/magazine-17.webp" alt="Gimena Coradello, Magazine Rock Lights 17" loading="lazy"></a>
+                    </div>
+                    <p class="session__caption label-caps">Studio · Magazine Rock Lights</p>
+                </article>
+
+                <article class="session">
+                    <header class="session__head">
+                        <p class="session__num">03</p>
+                        <div>
+                            <p class="label-caps">Sesión</p>
+                            <h3 class="session__title">Retrato Femenino</h3>
+                        </div>
+                    </header>
+                    <div class="session__grid session__grid--nine">
+                        <a class="session__img" href="./img/sessions/retrato/retrato-12.webp" data-lightbox><img src="./img/sessions/retrato/retrato-12.webp" alt="Gimena Coradello, Retrato 12" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/retrato/retrato-14.webp" data-lightbox><img src="./img/sessions/retrato/retrato-14.webp" alt="Gimena Coradello, Retrato 14" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/retrato/retrato-23.webp" data-lightbox><img src="./img/sessions/retrato/retrato-23.webp" alt="Gimena Coradello, Retrato 23" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/retrato/retrato-32.webp" data-lightbox><img src="./img/sessions/retrato/retrato-32.webp" alt="Gimena Coradello, Retrato 32" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/retrato/retrato-33.webp" data-lightbox><img src="./img/sessions/retrato/retrato-33.webp" alt="Gimena Coradello, Retrato 33" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/retrato/retrato-39.webp" data-lightbox><img src="./img/sessions/retrato/retrato-39.webp" alt="Gimena Coradello, Retrato 39" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/retrato/retrato-45.webp" data-lightbox><img src="./img/sessions/retrato/retrato-45.webp" alt="Gimena Coradello, Retrato 45" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/retrato/retrato-51.webp" data-lightbox><img src="./img/sessions/retrato/retrato-51.webp" alt="Gimena Coradello, Retrato 51" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/retrato/retrato-53.webp" data-lightbox><img src="./img/sessions/retrato/retrato-53.webp" alt="Gimena Coradello, Retrato 53" loading="lazy"></a>
+                    </div>
+                    <p class="session__caption label-caps">Studio · Retrato Femenino</p>
+                </article>
+
+                <article class="session">
+                    <header class="session__head">
+                        <p class="session__num">04</p>
+                        <div>
+                            <p class="label-caps">Sesión</p>
+                            <h3 class="session__title">TBN Club</h3>
+                        </div>
+                    </header>
+                    <div class="session__grid session__grid--six">
+                        <a class="session__img" href="./img/sessions/tbn/tbn-01.webp" data-lightbox><img src="./img/sessions/tbn/tbn-01.webp" alt="Gimena Coradello, TBN Club 01" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/tbn/tbn-03.webp" data-lightbox><img src="./img/sessions/tbn/tbn-03.webp" alt="Gimena Coradello, TBN Club 03" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/tbn/tbn-04.webp" data-lightbox><img src="./img/sessions/tbn/tbn-04.webp" alt="Gimena Coradello, TBN Club 04" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/tbn/tbn-07.webp" data-lightbox><img src="./img/sessions/tbn/tbn-07.webp" alt="Gimena Coradello, TBN Club 07" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/tbn/tbn-10.webp" data-lightbox><img src="./img/sessions/tbn/tbn-10.webp" alt="Gimena Coradello, TBN Club 10" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/tbn/tbn-12.webp" data-lightbox><img src="./img/sessions/tbn/tbn-12.webp" alt="Gimena Coradello, TBN Club 12" loading="lazy"></a>
+                    </div>
+                    <p class="session__caption label-caps">Producción · TBN Club</p>
+                </article>
+
+                <article class="session">
+                    <header class="session__head">
+                        <p class="session__num">05</p>
+                        <div>
+                            <p class="label-caps">Runway</p>
+                            <h3 class="session__title">Pasarela · Vexa Gaia</h3>
+                        </div>
+                    </header>
+                    <div class="session__grid session__grid--three">
+                        <a class="session__img" href="./img/sessions/pasarela/pasarela-02.webp" data-lightbox><img src="./img/sessions/pasarela/pasarela-02.webp" alt="Gimena Coradello, Pasarela 02" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/pasarela/pasarela-03.webp" data-lightbox><img src="./img/sessions/pasarela/pasarela-03.webp" alt="Gimena Coradello, Pasarela 03" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/pasarela/pasarela-04.webp" data-lightbox><img src="./img/sessions/pasarela/pasarela-04.webp" alt="Gimena Coradello, Pasarela 04" loading="lazy"></a>
+                    </div>
+                    <p class="session__caption label-caps">Runway · Vexa Gaia Harmony</p>
+                </article>
+
+                <article class="session">
+                    <header class="session__head">
+                        <p class="session__num">06</p>
+                        <div>
+                            <p class="label-caps">Sesión</p>
+                            <h3 class="session__title">Date Ross</h3>
+                        </div>
+                    </header>
+                    <div class="session__grid session__grid--six">
+                        <a class="session__img" href="./img/sessions/date-ross/date-ross-09.webp" data-lightbox><img src="./img/sessions/date-ross/date-ross-09.webp" alt="Gimena Coradello, Date Ross 09" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/date-ross/date-ross-12.webp" data-lightbox><img src="./img/sessions/date-ross/date-ross-12.webp" alt="Gimena Coradello, Date Ross 12" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/date-ross/date-ross-16.webp" data-lightbox><img src="./img/sessions/date-ross/date-ross-16.webp" alt="Gimena Coradello, Date Ross 16" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/date-ross/date-ross-17.webp" data-lightbox><img src="./img/sessions/date-ross/date-ross-17.webp" alt="Gimena Coradello, Date Ross 17" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/date-ross/date-ross-25.webp" data-lightbox><img src="./img/sessions/date-ross/date-ross-25.webp" alt="Gimena Coradello, Date Ross 25" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/date-ross/date-ross-26.webp" data-lightbox><img src="./img/sessions/date-ross/date-ross-26.webp" alt="Gimena Coradello, Date Ross 26" loading="lazy"></a>
+                    </div>
+                    <p class="session__caption label-caps">Editorial · Date Ross</p>
+                </article>
+
+                <article class="session">
+                    <header class="session__head">
+                        <p class="session__num">07</p>
+                        <div>
+                            <p class="label-caps">Polaroids</p>
+                            <h3 class="session__title">Composite / Casting</h3>
+                        </div>
+                    </header>
+                    <div class="session__grid session__grid--six">
+                        <a class="session__img" href="./img/sessions/composite-extra/comp-01.webp" data-lightbox><img src="./img/sessions/composite-extra/comp-01.webp" alt="Gimena Coradello, polaroid 1" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/composite-extra/comp-02.webp" data-lightbox><img src="./img/sessions/composite-extra/comp-02.webp" alt="Gimena Coradello, polaroid 2" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/composite-extra/comp-06.webp" data-lightbox><img src="./img/sessions/composite-extra/comp-06.webp" alt="Gimena Coradello, polaroid 6" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/composite-extra/comp-07.webp" data-lightbox><img src="./img/sessions/composite-extra/comp-07.webp" alt="Gimena Coradello, polaroid 7" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/composite-extra/comp-09.webp" data-lightbox><img src="./img/sessions/composite-extra/comp-09.webp" alt="Gimena Coradello, polaroid 9" loading="lazy"></a>
+                        <a class="session__img" href="./img/sessions/composite-extra/comp-10.webp" data-lightbox><img src="./img/sessions/composite-extra/comp-10.webp" alt="Gimena Coradello, polaroid 10" loading="lazy"></a>
+                    </div>
+                    <p class="session__caption label-caps">Casting · Polaroids blanco y negro</p>
+                </article>
             </div>
+        </section>
+
+        <section class="collab" aria-label="Campañas y colaboraciones">
+            <div class="collab__inner">
+                <p class="label-caps">Campañas & colaboraciones</p>
+                <ul class="collab__list">
+                    <li><span>Campaña fullContrast 2025</span></li>
+                    <li><span>Colección harmony 2024</span></li>
+                    <li><span>Runway Vexa Gaia</span></li>
+                    <li><span>Revista Marie Claire</span></li>
+                    <li><span>TBN Club</span></li>
+                    <li><span>PH Producción</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="credits" aria-label="Créditos y prensa">
+            <div class="credits__inner">
+                <p class="label-caps">Créditos & Press</p>
+                <h2 class="section-title credits__title">Quién hizo cada foto</h2>
+                <p class="credits__lede">Notas, marcas y profesionales que firmaron cada producción.</p>
+                <ul class="credits__list">
+                    <li>
+                        <a href="https://marieclaire.perfil.com/noticias/moda/en-primera-persona-fundo-una-marca-de-ropa-artesanal-y-federal-para-ayudar-a-las-mujeres.phtml" target="_blank" rel="noopener">
+                            <span class="credits__num">01</span>
+                            <span class="credits__name">Marie Claire</span>
+                            <span class="credits__meta">Nota · primera persona</span>
+                            <span class="credits__arrow" aria-hidden="true">→</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/tbnclub" target="_blank" rel="noopener">
+                            <span class="credits__num">02</span>
+                            <span class="credits__name">TBN Club</span>
+                            <span class="credits__meta">Producción · Instagram</span>
+                            <span class="credits__arrow" aria-hidden="true">→</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/luacaneteph" target="_blank" rel="noopener">
+                            <span class="credits__num">03</span>
+                            <span class="credits__name">Luca Canete PH</span>
+                            <span class="credits__meta">Fotografía · Instagram</span>
+                            <span class="credits__arrow" aria-hidden="true">→</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/vero_russo17" target="_blank" rel="noopener">
+                            <span class="credits__num">04</span>
+                            <span class="credits__name">Vero Russo</span>
+                            <span class="credits__meta">Fotografía · Instagram</span>
+                            <span class="credits__arrow" aria-hidden="true">→</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/arteymoda19" target="_blank" rel="noopener">
+                            <span class="credits__num">05</span>
+                            <span class="credits__name">Arte y Moda</span>
+                            <span class="credits__meta">Producción · Instagram</span>
+                            <span class="credits__arrow" aria-hidden="true">→</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="composite" id="medidas" aria-label="Composite y medidas">
+            <div class="composite__inner">
+                <figure class="composite__profile">
+                    <img src="./img/sessions/composite-extra/comp-01.webp" alt="Gimena Coradello, foto de perfil" loading="lazy">
+                </figure>
+                <div class="composite__content">
+                    <p class="label-caps">Profile 001</p>
+                    <h2 class="section-title">Composite</h2>
+                    <dl class="composite__grid">
+                        <div><dt>Altura</dt><dd>1.60 <span>m</span></dd></div>
+                        <div><dt>Pecho</dt><dd>79 <span>cm</span></dd></div>
+                        <div><dt>Cintura</dt><dd>63 <span>cm</span></dd></div>
+                        <div><dt>Cadera</dt><dd>89 <span>cm</span></dd></div>
+                        <div><dt>Ojos</dt><dd>Marrones</dd></div>
+                        <div><dt>Cabello</dt><dd>Castaño</dd></div>
+                        <div><dt>Calzado</dt><dd>38</dd></div>
+                        <div><dt>Piel</dt><dd>Trigueña</dd></div>
+                    </dl>
+                    <a class="btn btn--ghost" href="./composite/GI.pdf" target="_blank" rel="noopener">Descargar Composite (PDF)</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contacto">
+            <div class="contact__inner">
+                <p class="label-caps">Contacto</p>
+                <h2 class="section-title contact__title">¿Trabajamos juntos?</h2>
+                <p class="contact__lede">Disponible para campañas, e-commerce y producciones creativas. Escribime y armamos algo.</p>
+                <div class="contact__ctas">
+                    <a class="btn btn--primary" href="https://wa.me/5492477347673" target="_blank" rel="noopener" aria-label="Enviar WhatsApp a Gimena">WhatsApp</a>
+                    <a class="btn btn--ghost" href="https://instagram.com/gimecoradello" target="_blank" rel="noopener" aria-label="Ver Instagram de Gimena">Instagram</a>
+                    <a class="btn btn--ghost" href="mailto:gimecoradello@gmail.com" aria-label="Enviar email a Gimena">Email</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p class="footer__brand">Gimena Coradello · Modelo Independiente</p>
+            <p class="footer__copy">© 2026 — Todos los derechos reservados.</p>
+            <ul class="footer__links">
+                <li><a href="https://instagram.com/gimecoradello" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a href="https://wa.me/5492477347673" target="_blank" rel="noopener">WhatsApp</a></li>
+                <li><a href="mailto:gimecoradello@gmail.com">Email</a></li>
+            </ul>
         </div>
     </footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada" hidden>
+        <button class="lightbox__close" type="button" aria-label="Cerrar">×</button>
+        <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Anterior">←</button>
+        <img class="lightbox__img" alt="">
+        <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Siguiente">→</button>
+    </div>
+
+    <script src="./app.js" defer></script>
 </body>
 
 </html>
