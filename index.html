@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gimena Coradello — Modelo Independiente</title>
     <meta name="description" content="Portfolio editorial de Gimena Coradello. Modelo independiente disponible para bookings internacionales, campañas y producciones creativas.">
-    <meta name="theme-color" content="#f9f9f9">
+    <meta name="theme-color" content="#0a0a0a">
     <meta property="og:title" content="Gimena Coradello — Modelo Independiente">
     <meta property="og:description" content="Portfolio editorial. Disponible para bookings internacionales.">
     <meta property="og:type" content="website">
@@ -21,8 +21,7 @@
         (function () {
             try {
                 var stored = localStorage.getItem('gimena-theme');
-                var sysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                var theme = stored || (sysDark ? 'dark' : 'light');
+                var theme = stored || 'dark';
                 document.documentElement.setAttribute('data-theme', theme);
             } catch (e) { }
         })();
@@ -68,24 +67,26 @@
     <main id="main">
 
         <section class="hero" id="top">
-            <div class="hero__inner">
-                <figure class="hero__media">
-                    <img src="./img/sessions/date-ross/date-ross-09.webp" alt="Gimena Coradello, retrato editorial" width="900" height="1200" fetchpriority="high">
-                </figure>
-                <div class="hero__content">
-                    <p class="label-caps hero__eyebrow">Modelo Independiente</p>
-                    <h1 class="hero__title">Gimena<br>Coradello</h1>
-                    <p class="hero__lede">Disponible para bookings internacionales, campañas y producciones creativas. Colaboro en proyectos y con marcas comprometidas con un impacto positivo.</p>
-                    <div class="hero__ctas">
-                        <a class="btn btn--primary" href="#contacto">Trabajemos juntos</a>
-                        <a class="btn btn--ghost" href="#portfolio">Ver book</a>
-                    </div>
+            <figure class="hero__media">
+                <img src="./img/sessions/full-contrast/full-contrast-04.webp" alt="Gimena Coradello, retrato editorial" width="1600" height="1067" fetchpriority="high">
+            </figure>
+            <div class="hero__overlay"></div>
+            <div class="hero__content">
+                <p class="label-caps hero__eyebrow">Modelo Independiente · Buenos Aires</p>
+                <h1 class="hero__title">Gimena<br>Coradello</h1>
+                <p class="hero__lede">Disponible para bookings internacionales, campañas y producciones creativas. Editorial · Studio · Urban · Pasarela.</p>
+                <div class="hero__ctas">
+                    <a class="btn btn--lime" href="#contacto">Trabajemos juntos</a>
+                    <a class="btn btn--ghost btn--ghost-light" href="#portfolio">Ver book</a>
                 </div>
             </div>
-            <div class="marquee" aria-hidden="true">
-                <div class="marquee__track">
-                    <span>Gimena</span><span class="marquee__dot">●</span><span>Selected Works 2026</span><span class="marquee__dot">●</span><span>Editorial</span><span class="marquee__dot">●</span><span>Studio</span><span class="marquee__dot">●</span><span>Urban</span><span class="marquee__dot">●</span>
-                    <span>Gimena</span><span class="marquee__dot">●</span><span>Selected Works 2026</span><span class="marquee__dot">●</span><span>Editorial</span><span class="marquee__dot">●</span><span>Studio</span><span class="marquee__dot">●</span><span>Urban</span><span class="marquee__dot">●</span>
+            <a class="hero__scroll" href="#sobre-mi" aria-label="Bajar al contenido">
+                <span>Scroll</span>
+            </a>
+            <div class="marquee marquee--hero" aria-hidden="true">
+                <div class="marquee__track marquee__track--light">
+                    <span>Gimena</span><span class="marquee__dot">●</span><span>Selected Works 2026</span><span class="marquee__dot">●</span><span>Editorial</span><span class="marquee__dot">●</span><span>Studio</span><span class="marquee__dot">●</span><span>Urban</span><span class="marquee__dot">●</span><span>Pasarela</span><span class="marquee__dot">●</span>
+                    <span>Gimena</span><span class="marquee__dot">●</span><span>Selected Works 2026</span><span class="marquee__dot">●</span><span>Editorial</span><span class="marquee__dot">●</span><span>Studio</span><span class="marquee__dot">●</span><span>Urban</span><span class="marquee__dot">●</span><span>Pasarela</span><span class="marquee__dot">●</span>
                 </div>
             </div>
         </section>

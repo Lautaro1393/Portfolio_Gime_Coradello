@@ -22,8 +22,7 @@
         const mq = window.matchMedia('(prefers-color-scheme: dark)');
         mq.addEventListener && mq.addEventListener('change', (e) => {
             if (localStorage.getItem('gimena-theme')) return;
-            root.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-            setPressed();
+            // Dark es el default, no respondemos al cambio del sistema
         });
     }
 
