@@ -51,3 +51,5 @@ conver.js
 !composite/GI.pdf
 og-base.jpg
 og-preview.jpg
+preview-deployed-*.jpeg
+preview-deployed-*.png
