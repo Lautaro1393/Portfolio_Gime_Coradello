@@ -702,17 +702,21 @@ ul { list-style: none; }
 }
 .composite__inner {
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
     gap: var(--gutter);
-    align-items: stretch;
+    align-items: start;
 }
 .composite__profile {
     aspect-ratio: 3 / 4;
     overflow: hidden;
     background: var(--surface-2);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-shadow: 8px 8px 0 0 #e0ff4f;
 }
-.composite__profile img { width: 100%; height: 100%; object-fit: cover; }
-.composite__content { display: flex; flex-direction: column; gap: 1.5rem; }
+.composite__profile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.composite__content { display: flex; flex-direction: column; gap: 1.5rem; min-width: 0; }
 .composite__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
