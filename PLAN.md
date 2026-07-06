@@ -157,6 +157,16 @@ Pedidos en orden de mención (ordené la prioridad según criterio técnico):
 
 ---
 
+## Pendientes de feedback reciente
+
+- **Marquee del hero:** los costados se ven "medio raro". Issues detectados:
+  - El "SCROLL" indicator vertical queda muy pegado al borde derecho y se solapa con el texto del marquee
+  - El marquee se corta de forma abrupta en el borde derecho (no hay fade)
+  - El padding inferior del marquee es muy ajustado
+  - Pendiente: agregar fade-out en costados, ajustar posición del scroll indicator, mejorar espaciado
+
+---
+
 ## Cómo retomar
 
 1. Decidir los tradeoffs del cambio #1 (default theme, nivel de color, layout del hero)
